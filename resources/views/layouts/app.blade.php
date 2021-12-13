@@ -33,6 +33,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        @guest
+                            
+                        @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link" href="{{ url('/company') }}" v-pre>
+                                Company <span class="caret"></span>
+                            </a>
+                        </li>
+                        @endif
 
                     </ul>
 

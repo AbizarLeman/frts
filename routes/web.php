@@ -18,3 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['auth']], function() {
+    // Company section
+    Route::get('/company/create',"CompanyController@create");
+    Route::post('/company/store/',"CompanyController@store");
+    Route::get('/company',"CompanyController@show");
+});
