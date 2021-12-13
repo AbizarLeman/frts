@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\AgriculturalOutput;
 use Illuminate\Http\Request;
 
 class AgriculturalOutputController extends Controller
@@ -22,9 +23,10 @@ class AgriculturalOutputController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($selection)
     {
-        //
+        $outputs = AgriculturalOutput::all();
+        return view('output',['outputs'=>$outputs,'layout'=>'create','type'=>$selection]);
     }
 
     /**
@@ -84,6 +86,12 @@ class AgriculturalOutputController extends Controller
     }
 
     public function getOutputType()
+    {
+        $company = Company::all()->where('user_id', auth()->user()->id)->first();
+        return view('outputtypeselection',['company'=>$company]);
+    }
+
+    public function postOutputType()
     {
         $company = Company::all()->where('user_id', auth()->user()->id)->first();
         return view('outputtypeselection',['company'=>$company]);

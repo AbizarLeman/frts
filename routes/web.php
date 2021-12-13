@@ -27,4 +27,5 @@ Route::group(['middleware' => ['auth']], function() {
 
     // Output section
     Route::get('/output',"AgriculturalOutputController@getOutputType");
+    Route::get('/output/create/{selection}',"AgriculturalOutputController@create");
 });
