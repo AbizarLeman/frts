@@ -24,4 +24,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/company/create',"CompanyController@create");
     Route::post('/company/store/',"CompanyController@store");
     Route::get('/company',"CompanyController@show");
+
+    // Output section
+    Route::get('/output',"AgriculturalOutputController@getOutputType");
 });
