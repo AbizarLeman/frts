@@ -65,7 +65,7 @@ class CompanyController extends Controller
             $company->goat = $request->input('goat');
         }
         if ($request->input('cut-flower') == 1) {
-            $company->cut_flower = $request->input('riccut-flowere');
+            $company->cut_flower = $request->input('cut-flower');
         }
         if ($request->input('egg') == 1) {
             $company->egg = $request->input('egg');
@@ -90,7 +90,7 @@ class CompanyController extends Controller
      */
     public function show()
     {
-        $company = Company::find(auth()->user()->id);
+        $company = Company::all()->where('user_id', auth()->user()->id)->first();
 
         if ($company == null) { 
             return redirect('/company/create');

@@ -35,6 +35,7 @@ class CreateCompaniesTable extends Migration
             $table->boolean('miscellaneous')->default(0);
             $table->string('miscellaneous_string');
             $table->bigInteger('user_id')->unsigned();
+            $table->boolean('isVerified')->default(0);
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

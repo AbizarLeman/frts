@@ -138,6 +138,10 @@
                     </form>
                 </div>
 
+                @elseif ($layout == 'show')
+
+                <div>Show Company</div>
+
                 @endif
             </div>
         </div>
