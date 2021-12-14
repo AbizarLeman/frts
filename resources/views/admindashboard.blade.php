@@ -6,7 +6,7 @@
         <div class="col-5 m-4">
             <div class="card">
                 <div class="card-body" style="text-align:center;">
-                    <a href=""><i class="bi bi-building" style="font-size:10em;"></i></a>
+                    <a href="{{ url('/report') }}"><i class="bi bi-building" style="font-size:10em;"></i></a>
                     <h1 class="card-title text-center">View Submitted Agricultural Output</h5>
                 </div>
             </div>
