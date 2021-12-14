@@ -5,10 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                @if ($layout == 'show')
+
                 <div class="card-header">Company</div>
-
-                @if ($layout == 'show') 
-
                 <div class="row">
                     <section class="col">
                         @include('companyprofile')
@@ -16,12 +15,9 @@
                 </div>
 
                 @elseif ($layout == 'create')
-
+                
+                <div class="card-header">Company Registration</div>
                 @include('companyregistration')
-
-                @elseif ($layout == 'show')
-
-                <div>Show Company</div>
 
                 @endif
             </div>
