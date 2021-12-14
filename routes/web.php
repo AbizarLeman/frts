@@ -29,4 +29,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/output',"AgriculturalOutputController@getOutputType");
     Route::get('/output/create/{selection}',"AgriculturalOutputController@create");
     Route::post('/output/store',"AgriculturalOutputController@store");
+
+    // Report section
+    Route::get('/report',"ReportController@index")->name('report');
 });

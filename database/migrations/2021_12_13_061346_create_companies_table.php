@@ -13,6 +13,7 @@ class CreateCompaniesTable extends Migration
      */
     public function up()
     {
+        Schema::enableForeignKeyConstraints();
         Schema::dropIfExists('companies');
         Schema::create('companies', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -34,9 +35,9 @@ class CreateCompaniesTable extends Migration
             $table->boolean('ornamental_horticulture')->default(0);
             $table->boolean('miscellaneous')->default(0);
             $table->string('miscellaneous_string')->default('');
-            $table->bigInteger('user_id')->unsigned();
             $table->boolean('isVerified')->default(0);
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -48,6 +49,8 @@ class CreateCompaniesTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('companies');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
