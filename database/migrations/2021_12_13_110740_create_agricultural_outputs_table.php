@@ -19,12 +19,12 @@ class CreateAgriculturalOutputsTable extends Migration
             $table->bigInteger('company_id')->unsigned();
             $table->foreign('company_id')->references('id')->on('companies');
             $table->string('output_type');
-            $table->float('output_in_metric_ton');
+            $table->float('output_in_kg');
             $table->string('district');
             $table->string('mukim');
             $table->string('village');
+            $table->string('agricultural_development_area');
             $table->boolean('isVerified')->default(0);
-            $table->date('submitted_at');
             $table->timestamps();
         });
     }

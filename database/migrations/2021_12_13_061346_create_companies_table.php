@@ -33,7 +33,7 @@ class CreateCompaniesTable extends Migration
             $table->boolean('egg')->default(0);
             $table->boolean('ornamental_horticulture')->default(0);
             $table->boolean('miscellaneous')->default(0);
-            $table->string('miscellaneous_string');
+            $table->string('miscellaneous_string')->default('');
             $table->bigInteger('user_id')->unsigned();
             $table->boolean('isVerified')->default(0);
             $table->foreign('user_id')->references('id')->on('users');

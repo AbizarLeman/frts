@@ -10,21 +10,79 @@
                 @if ($layout == 'create')
 
                 <div class="card-body">
-                    <form method="POST" action="{{ url('/company/store/') }}">
+                    <form method="POST" action="{{ url('/output/store/') }}">
                         @csrf
 
                         <div class="form-group row">
                             <label for="output-type" class="col-md-4 col-form-label text-md-right">Agricultural Output Type</label>
-
+                            
                             <div class="col-md-6">
-                                <p>{{ $type }}</p>
+                            @if ($type == 'rice') 
+                                <p class="form-control">Rice</p>
+                            @elseif ($type == 'broiler')
+                                <p class="form-control">Broiler</p>
+                            @elseif ($type == 'vegetables')
+                                <p class="form-control">Vegetables</p>
+                            @elseif ($type == 'fruits')
+                                <p class="form-control">Fruits</p>
+                            @elseif ($type == 'buffaloes')
+                                <p class="form-control">Buffaloes</p>
+                            @elseif ($type == 'cattle')
+                                <p class="form-control">Cattle</p>
+                            @elseif ($type == 'goats')
+                                <p class="form-control">Goats</p>
+                            @elseif ($type == 'cut-flowers')
+                                <p class="form-control">Cut Flower</p>
+                            @elseif ($type == 'eggs')
+                                <p class="form-control">Eggs</p>
+                            @elseif ($type == 'ornamental-horticulture')
+                                <p class="form-control">Ornamental Horticulture</p>
+                            @elseif ($type == 'miscellaneous')
+                                <p class="form-control">Miscellaneous</p> 
+                            @endif
+                                <input id="output-type" type="text" value="{{ $type }}" name="output-type" hidden autofocus>
                             </div>
                         </div>
+                        @if ($type == 'rice')
+
                         <div class="form-group row">
-                            <label for="output-in-metric-ton" class="col-md-4 col-form-label text-md-right">Metric Ton</label>
+                            <label for="planted-at" class="col-md-4 col-form-label text-md-right">Planting Date</label>
 
                             <div class="col-md-6">
-                                <input id="output-in-metric-ton" type="text" class="form-control" name="output-in-metric-ton" required autofocus>
+                                <input id="planted-at" type="date" class="form-control" name="planted-at" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="packaged-at" class="col-md-4 col-form-label text-md-right">Harvesting/Packaging Date</label>
+
+                            <div class="col-md-6">
+                                <input id="packaged-at" type="date" class="form-control" name="packaged-at" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="quantity-packaged" class="col-md-4 col-form-label text-md-right">Quantity Packaged</label>
+
+                            <div class="col-md-6">
+                                <input id="quantity-packaged" type="number" class="form-control" name="quantity-packaged" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="kg-per-packaging" class="col-md-4 col-form-label text-md-right">Kilogram per Packaging</label>
+
+                            <div class="col-md-6">
+                                <input id="kg-per-packaging" type="number" step="any" class="form-control" name="kg-per-packaging" required autofocus>
+                            </div>
+                        </div>
+                            
+                        @endif
+                        <div class="form-group row">
+                            <label for="output-in-kg" class="col-md-4 col-form-label text-md-right">Output in Kilogram</label>
+
+                            <div class="col-md-6">
+                                <input id="output-in-kg" type="number" step="any" class="form-control" name="output-in-kg" required autofocus>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -48,6 +106,13 @@
                                 <input id="village" type="text" class="form-control" name="village" required autofocus>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="agricultural-development-area" class="col-md-4 col-form-label text-md-right">Agricultural Development Area</label>
+
+                            <div class="col-md-6">
+                                <input id="agricultural-development-area" type="text" class="form-control" name="agricultural-development-area" autofocus>
+                            </div>
+                        </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">Add</button>
@@ -55,7 +120,7 @@
                         </div>
                     </form>
                 </div>
-                
+
                 @endif
             </div>
         </div>
