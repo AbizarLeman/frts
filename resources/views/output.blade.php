@@ -49,7 +49,7 @@
                             
                         @endif
                         <div class="form-group row">
-                            <label for="output-in-kg" class="col-md-4 col-form-label text-md-right">Output in Kilogram</label>
+                            <label for="output-in-kg" class="col-md-4 col-form-label text-md-right">Total Output in Kilogram</label>
 
                             <div class="col-md-6">
                                 <input id="output-in-kg" type="number" step="any" class="form-control" name="output-in-kg" required autofocus>
