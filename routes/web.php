@@ -25,6 +25,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/company/store/',"CompanyController@store");
     Route::get('/company',"CompanyController@show");
 
+    Route::get('/company/edit/{id}', "CompanyController@edit");
+    Route::post('/company/update/{id}',"CompanyController@update");
+    Route::get('/company/destroy/{id}',"CompanyController@destroy");
+
     // Output section
     Route::get('/output',"AgriculturalOutputController@getOutputType");
     Route::get('/output/create/{selection}',"AgriculturalOutputController@create");
