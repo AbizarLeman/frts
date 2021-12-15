@@ -84,7 +84,28 @@ class ReportController extends Controller
         //
     }
 
-    public function getFilter(){
-        return view('filteroutputreport');
+    public function getFilteredList(Request $request){
+        $agriculturalOutputs = AgriculturalOutput::all();
+
+        if ($request->filled('output-type')) {
+            $agriculturalOutputs = $agriculturalOutputs->where('output_type', $request->input('output-type'));
+        }
+        if ($request->filled('start-date') && $request->filled('end-date')) {
+            $agriculturalOutputs = $agriculturalOutputs->where('packaged_at', '>=', $request->input('start-date'))->where('packaged_at', '<=', $request->input('end-date'));
+        }
+        if ($request->filled('district')) {
+            $agriculturalOutputs = $agriculturalOutputs->where('district', $request->input('district'));
+        }
+        if ($request->filled('mukim')) {
+            $agriculturalOutputs = $agriculturalOutputs->where('mukim', $request->input('mukim'));
+        }
+        if ($request->filled('village')) {
+            $agriculturalOutputs = $agriculturalOutputs->where('village', $request->input('village'));
+        }
+        if ($request->filled('agricultural-development-area')) {
+            $agriculturalOutputs = $agriculturalOutputs->where('agricultural_development_area', $request->input('agricultural-development-area'));
+        }
+
+        return view('adminoutputlist',['outputs'=>$agriculturalOutputs,'layout'=>'index']);
     }
 }

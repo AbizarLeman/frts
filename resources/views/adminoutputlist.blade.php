@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col">
+            {!! Form::open(['action' => 'ReportController@getFilteredList', 'method' => 'GET']) !!}
             <div class="row">
                 <div class="col-6">
                     <label for="output-type">Output Type:</label>
@@ -25,18 +26,21 @@
                     <label for="district">District:</label>
                     <select class="form-control" name="district" id="">
                         <option value="Brunei-Muara">Brunei-Muara</option>
+                        <option value="Tutong">Tutong</option>
                     </select>
                 </div>
                 <div class="col-4">
                     <label for="mukim">Mukim:</label>
                     <select class="form-control" name="mukim" id="">
                         <option value="Gadong">Gadong</option>
+                        <option value="Pekan Tutong">Pekan Tutong</option>
                     </select>
                 </div>
                 <div class="col-4">
                     <label for="village">Village:</label>
                     <select class="form-control" name="village" id="">
                         <option value="Tungku">Tungku</option>
+                        <option value="Bukit Bendera">Bukit Bendera</option>
                     </select>
                 </div>
             </div>
@@ -45,13 +49,14 @@
                     <label for="agricultural-development-area">Agricultural Development Area:</label>
                     <select class="form-control" name="agricultural-development-area" id="">
                         <option value="Area 1">Area 1</option>
+                        <option value="Area 6">Area 6</option>
                     </select>
                 </div>
             </div>
             <br><br>
             <div class="row">
                 <div class="col-3">
-                    <button type="submit" class="btn btn-primary btn-block">Filter</button>
+                    {{ Form::Submit('submit', ['class' => 'btn btn-primary btn-block']) }}
                 </div>
             </div>
             <br><br>
