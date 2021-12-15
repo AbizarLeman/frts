@@ -24,19 +24,19 @@
                 <div class="col-4">
                     <label for="district">District:</label>
                     <select class="form-control" name="district" id="">
-                        <option value="rice">Rice</option>
+                        <option value="Brunei-Muara">Brunei-Muara</option>
                     </select>
                 </div>
                 <div class="col-4">
                     <label for="mukim">Mukim:</label>
                     <select class="form-control" name="mukim" id="">
-                        <option value="rice">Rice</option>
+                        <option value="Gadong">Gadong</option>
                     </select>
                 </div>
                 <div class="col-4">
                     <label for="village">Village:</label>
                     <select class="form-control" name="village" id="">
-                        <option value="rice">Rice</option>
+                        <option value="Tungku">Tungku</option>
                     </select>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <div class="col">
                     <label for="agricultural-development-area">Agricultural Development Area:</label>
                     <select class="form-control" name="agricultural-development-area" id="">
-                        <option value="rice">Rice</option>
+                        <option value="Area 1">Area 1</option>
                     </select>
                 </div>
             </div>
@@ -70,8 +70,7 @@
                 </thead>
                 <tbody>
                     @foreach ($outputs as $output)
-                        
-                    @endforeach
+
                     <tr>
                         <td>{{ $output->output_type }}</td>
                         <td>{{ $output->packaged_at }}</td>
@@ -83,7 +82,9 @@
                         <td>
                             <input type="checkbox" id="miscellaneous" name="miscellaneous" value="{{ $output->id }}">
                         </td>
-                    </tr>     
+                    </tr>
+                      
+                    @endforeach   
                 </tbody>
             </table>
         </div>
