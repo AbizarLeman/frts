@@ -25,9 +25,9 @@
                 <b>Fruit:</b>{{ $company->fruit }}<br>
                 <b>Buffalo:</b>{{ $company->buffalo }}<br>
                 <b>Cattle:</b>{{ $company->cattle }}<br>
-                <b>Egg:</b>{{ $company->egg }}</td>
+                <b>Egg:</b>{{ $company->egg }}<br>
                 <b>Ornamental Horticulture:</b>{{ $company->ornamental_horticulture }}<br>
-                <b>Miscellaneous</b>{{ $company->miscellaneous_string }}<br>
+                <b>Miscellaneous:</b>{{ $company->miscellaneous_string }}<br>
             </td>
 
             <td>

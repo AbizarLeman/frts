@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Company</div>
 
@@ -142,7 +142,14 @@
 
                 <div>Show Company</div>
 
+
+                @elseif($layout == 'edit')
+
+             
+                    </form>
+                </div>
                 @endif
+
             </div>
         </div>
     </div>
