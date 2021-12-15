@@ -2,15 +2,17 @@
 
 <div class="form-group row">
     <label for="harvested-at" class="col-md-4 col-form-label text-md-right">Harvesting/Packaging Date</label>
+    <div class="col-md-6">
+        <input id="harvested-at" type="date" class="form-control" name="harvested-at" required autofocus>
+    </div>
+</div>
 <div class="form-group row">
     <label for="born-at" class="col-md-4 col-form-label text-md-right">start of hatching season</label>
 
     <div class="col-md-6">
         <input id="born-at" type="date" class="form-control" name="born-at" required autofocus>
     </div>
-    <div class="col-md-6">
-        <input id="harvested-at" type="date" class="form-control" name="harvested-at" required autofocus>
-    </div>
+
 </div>
 
 <div class="form-group row">
@@ -28,4 +30,3 @@
         <input id="kg-per-head" type="number" step="any" class="form-control" name="kg-per-head" required autofocus>
     </div>
 </div>
-//type of feed kali
