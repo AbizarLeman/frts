@@ -115,7 +115,9 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $company=Company::find($id);
+        $companies=Company::all();
+        return view('company',['company'=>$company,'layout'=>'edit']);
     }
 
     /**
@@ -127,7 +129,50 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $company = Company::find($id);
+        $company->company_name = $request->input('company-name');
+        $company->rocbn = $request->input('rocbn');
+        $company->district = $request->input('district');
+        $company->mukim = $request->input('mukim');
+        $company->village = $request->input('village');
+        $company->street_address = $request->input('street-address');
+        if ($request->input('rice') == 1) {
+            $company->rice = $request->input('rice');
+        }
+        if ($request->input('broiler') == 1) {
+            $company->broiler = $request->input('broiler');
+        }
+        if ($request->input('vegetable') == 1) {
+            $company->vegetable = $request->input('vegetable');
+        }
+        if ($request->input('fruit') == 1) {
+            $company->fruit = $request->input('fruit');
+        }
+        if ($request->input('buffalo') == 1) {
+            $company->buffalo = $request->input('buffalo');
+        }
+        if ($request->input('cattle') == 1) {
+            $company->cattle = $request->input('cattle');
+        }
+        if ($request->input('goat') == 1) {
+            $company->goat = $request->input('goat');
+        }
+        if ($request->input('cut-flower') == 1) {
+            $company->cut_flower = $request->input('cut-flower');
+        }
+        if ($request->input('egg') == 1) {
+            $company->egg = $request->input('egg');
+        }
+        if ($request->input('ornamental-horticulture') == 1) {
+            $company->ornamental_horticulture = $request->input('ornamental-horticulture');
+        }
+        if ($request->input('miscellaneous') == 1) {
+            $company->rice = $request->input('miscellaneous');
+            $company->miscellaneous_string = $request->input('miscellaneous-string');
+        }
+        $company->user_id = auth()->user()->id;
+        $company->save();
+        return redirect('/company');
     }
 
     /**
@@ -138,6 +183,8 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $company= Company::find($id);
+        $company->delete();
+        return redirect('/company');
     }
 }
