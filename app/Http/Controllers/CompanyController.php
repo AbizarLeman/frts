@@ -24,8 +24,12 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        $companies = Company::all();
-        return view('company',['companies'=>$companies,'layout'=>'create']);
+        if (auth()->user()->isAdmin == 0) {
+            $companies = Company::all();
+            return view('company',['companies'=>$companies,'layout'=>'create']);
+        }
+
+        return view('admindashboard');
     }
 
     /**
@@ -90,13 +94,17 @@ class CompanyController extends Controller
      */
     public function show()
     {
-        $company = Company::all()->where('user_id', auth()->user()->id)->first();
+        if (auth()->user()->isAdmin == 0) {
+            $company = Company::all()->where('user_id', auth()->user()->id)->first();
 
-        if ($company == null) { 
-            return redirect('/company/create');
+            if ($company == null) { 
+                return redirect('/company/create');
+            }
+    
+            return view('company',['company'=>$company,'layout'=>'show']);
         }
 
-        return view('company',['company'=>$company,'layout'=>'show']);
+        return view('admindashboard');
     }
 
     /**

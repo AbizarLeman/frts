@@ -3,7 +3,58 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col">
+            <div class="row">
+                <div class="col-6">
+                    <label for="output-type">Output Type:</label>
+                    <select class="form-control" name="output-type" id="">
+                        <option value="rice">Rice</option>
+                    </select>
+                </div>
+                <div class="col-3">
+                    <label for="start-date">Start Date:</label>
+                    <input id="" type="date" class="form-control" name="start-date" autofocus>
+                </div>
+                <div class="col-3">
+                    <label for="end-date">End Date:</label>
+                    <input id="" type="date" class="form-control" name="end-date" autofocus>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label for="district">District:</label>
+                    <select class="form-control" name="district" id="">
+                        <option value="rice">Rice</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label for="mukim">Mukim:</label>
+                    <select class="form-control" name="mukim" id="">
+                        <option value="rice">Rice</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label for="village">Village:</label>
+                    <select class="form-control" name="village" id="">
+                        <option value="rice">Rice</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="agricultural-development-area">Agricultural Development Area:</label>
+                    <select class="form-control" name="agricultural-development-area" id="">
+                        <option value="rice">Rice</option>
+                    </select>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-3">
+                    <button type="submit" class="btn btn-primary btn-block">Filter</button>
+                </div>
+            </div>
+            <br><br>
             <table class="table">
                 <thead class="thead-light">
                     <tr>
@@ -39,3 +90,12 @@
     </div>
 </div>
 @endsection
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        // $("p").click(function(){
+        //     alert("The paragraph was clicked.");
+        // });
+    });
+</script>

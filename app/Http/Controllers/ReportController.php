@@ -95,4 +95,8 @@ class ReportController extends Controller
     {
         //
     }
+
+    public function getFilter(){
+        return view('filteroutputreport');
+    }
 }

@@ -26,7 +26,11 @@ class AgriculturalOutputController extends Controller
      */
     public function create($selection)
     {
-        return view('output',['layout'=>'create','type'=>$selection]);
+        if (auth()->user()->isAdmin == 0) {
+            return view('output',['layout'=>'create','type'=>$selection]);
+        }
+        
+        return view('admindashboard');
     }
 
     /**

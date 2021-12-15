@@ -33,5 +33,5 @@ Route::group(['middleware' => ['auth']], function() {
 
 Route::group(['middleware' => ['auth', 'admin']], function() {
     // Report section
-    Route::get('/report',"ReportController@index")->name('report');
+    Route::get('/report/index',"ReportController@index");
 });
