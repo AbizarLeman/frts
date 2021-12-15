@@ -30,3 +30,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/output/create/{selection}',"AgriculturalOutputController@create");
     Route::post('/output/store',"AgriculturalOutputController@store");
 });
+
+Route::group(['middleware' => ['auth', 'admin']], function() {
+    // Report section
+    Route::get('/report/index',"ReportController@index");
+});

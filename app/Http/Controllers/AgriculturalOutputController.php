@@ -26,7 +26,11 @@ class AgriculturalOutputController extends Controller
      */
     public function create($selection)
     {
-        return view('output',['layout'=>'create','type'=>$selection]);
+        if (auth()->user()->isAdmin == 0) {
+            return view('output',['layout'=>'create','type'=>$selection]);
+        }
+        
+        return view('admindashboard');
     }
 
     /**
@@ -42,6 +46,7 @@ class AgriculturalOutputController extends Controller
         $agriculturalOutput->company_id = $company->id;
         $agriculturalOutput->output_type = $request->input('output-type');
         $agriculturalOutput->output_in_kg = $request->input('output-in-kg');
+        $agriculturalOutput->packaged_at = $request->input('packaged-at');
         $agriculturalOutput->district = $request->input('district');
         $agriculturalOutput->mukim = $request->input('mukim');
         $agriculturalOutput->village = $request->input('village');

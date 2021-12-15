@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +25,15 @@ class HomeController extends Controller
     public function index()
     {
         if (auth()->user()->isAdmin == 0) {
+            $company = Company::find(auth()->user()->id);
+
+            if ($company == null) {
+                return redirect('/company');
+            }
+
             return view('home');
         }
+
+        return view('admindashboard');
     }
 }
