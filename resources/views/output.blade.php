@@ -46,6 +46,7 @@
                         @if ($type == 'rice')
 
                         @include('addrice')
+
                             
                         @endif
                         <div class="form-group row">
