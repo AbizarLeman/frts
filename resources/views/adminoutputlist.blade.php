@@ -59,6 +59,7 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">Agricultural Output Type</th>
+                        <th scope="col">Company Name</th>
                         <th scope="col">Harvesting/Packaging Date</th>
                         <th scope="col">Output in Kilogram</th>
                         <th scope="col">District</th>
@@ -73,6 +74,7 @@
 
                     <tr>
                         <td>{{ $output->output_type }}</td>
+                        <td>{{ \App\Company::where(['id' => $output->company_id])->pluck('company_name')->first() }}</td>
                         <td>{{ $output->packaged_at }}</td>
                         <td>{{ $output->output_in_kg }}</td>
                         <td>{{ $output->district }}</td>
@@ -83,7 +85,7 @@
                             <input type="checkbox" id="miscellaneous" name="miscellaneous" value="{{ $output->id }}">
                         </td>
                     </tr>
-                      
+
                     @endforeach   
                 </tbody>
             </table>
