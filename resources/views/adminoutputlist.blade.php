@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col text-center">
-            <h1 class="display-4">Agricultural Output Report</h1><br><br><br>
+            <h1 class="display-4">Generate Agricultural Output Report</h1><br><br><br>
         </div>
         <div class="col">
             {!! Form::open(['action' => 'OutputReportController@getFilteredList', 'method' => 'GET']) !!}
@@ -88,7 +88,7 @@
             <br><br>
             <div class="row">
                 <div class="col-3">
-                    {{ Form::Submit('submit', ['class' => 'btn btn-primary btn-block']) }}
+                    {{ Form::Submit('Filter', ['class' => 'btn btn-primary btn-block', 'value' => 'filter']) }}
                 </div>
             </div>
             <br><br>
@@ -119,13 +119,15 @@
                         <td>{{ $output->village }}</td>
                         <td>{{ $output->agricultural_development_area }}</td>
                         <td>
-                            <input type="checkbox" id="miscellaneous" name="miscellaneous" value="{{ $output->id }}">
+                            <input type="checkbox" id="outputId" name="output-id[]" value="{{ $output->id }}">
                         </td>
                     </tr>
 
                     @endforeach   
                 </tbody>
             </table>
+            <br><br><br>
+            {{ Form::Submit('Generate Report', ['class' => 'btn btn-primary btn-block', 'name' => 'generate', 'value' => 'generate']) }}
         </div>
     </div>
 </div>

@@ -34,9 +34,8 @@ class OutputReportController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id)
     {
-        //
     }
 
     /**
@@ -85,6 +84,11 @@ class OutputReportController extends Controller
     }
 
     public function getFilteredList(Request $request){
+        if ($request->input('generate') == 'Generate Report') {
+            // $this->store($request->input('output-id'));
+            return view('designoutputreport',['response'=>response()->json($request->input('output-id'))]);
+        }
+
         $agriculturalOutputs = AgriculturalOutput::all();
 
         if ($request->filled('output-type')) {
@@ -107,5 +111,9 @@ class OutputReportController extends Controller
         }
 
         return view('adminoutputlist',['outputs'=>$agriculturalOutputs,'layout'=>'index']);
+    }
+
+    public function buildTable(Request $request){
+        return response()->json($request);
     }
 }
