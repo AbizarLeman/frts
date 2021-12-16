@@ -32,11 +32,11 @@ Route::group(['middleware' => ['auth']], function() {
     // Output section
     Route::get('/output',"AgriculturalOutputController@getOutputType");
     Route::get('/output/create/{selection}',"AgriculturalOutputController@create");
-    Route::post('/output/store',"AgriculturalOutputController@store");
+    Route::post('/output/store/',"AgriculturalOutputController@store");
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function() {
     // Report section
-    Route::get('/report/index',"ReportController@index");
-    Route::get('/report/filter',"ReportController@getFilteredList");
+    Route::get('/report/index',"OutputReportController@index");
+    Route::get('/report/filter',"OutputReportController@getFilteredList");
 });

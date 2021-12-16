@@ -19,7 +19,9 @@ class CreateReportsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('title');
             $table->string('description');
-            $table->date('start_date');
+            $table->string('report_type');
+            $table->bigInteger('agricultural_output_id')->unsigned();
+            $table->bigInteger('sales_record_id')->unsigned();
             $table->date('end_date');
             $table->timestamps();
         });

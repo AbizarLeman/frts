@@ -4,10 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col text-center">
-            <h1 class="display-4">Generete Agricultural Output Report</h1><br><br><br>
+            <h1 class="display-4">Agricultural Output Report</h1><br><br><br>
         </div>
         <div class="col">
-            {!! Form::open(['action' => 'ReportController@getFilteredList', 'method' => 'GET']) !!}
+            {!! Form::open(['action' => 'OutputReportController@getFilteredList', 'method' => 'GET']) !!}
             <div class="d-flex flex-row-reverse">
                 <div class="form-check-inline">
                     <label class="form-check-label">

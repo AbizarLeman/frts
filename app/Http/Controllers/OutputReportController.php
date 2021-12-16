@@ -6,7 +6,7 @@ use App\AgriculturalOutput;
 use App\Company;
 use Illuminate\Http\Request;
 
-class ReportController extends Controller
+class OutputReportController extends Controller
 {
     /**
      * Display a listing of the resource.
