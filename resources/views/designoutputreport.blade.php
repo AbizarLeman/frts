@@ -147,7 +147,7 @@
         let years = document.getElementById("year");
         let currentYear = (new Date()).getFullYear();
  
-        for (let i = 2010; i <= currentYear; i++) {
+        for (let i = currentYear; i >= currentYear-10; i--) {
             var option = document.createElement("OPTION");
             option.innerHTML = i;
             option.value = i;
