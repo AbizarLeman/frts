@@ -149,8 +149,8 @@ class OutputReportController extends Controller
                                 $output_types[$output_record->output_type] = $output_record->output_in_kg;
                             }
 
-                            if (!isset($groups[$output_record->$grouping])) {
-                                $groups[$output_record->$grouping] = $output_record->$grouping;
+                            if (!in_array($output_record->$grouping, $groups)) {
+                                $groups[] = $output_record->$grouping;
                             }
                         }
                         
@@ -200,8 +200,8 @@ class OutputReportController extends Controller
                                 $output_types[$output_record->output_type] = $output_record->output_in_kg;
                             }
 
-                            if (!isset($groups[$output_record->$grouping])) {
-                                $groups[$output_record->$grouping] = $output_record->$grouping;
+                            if (!in_array($output_record->$grouping, $groups)) {
+                                $groups[] = $output_record->$grouping;
                             }
                         }
                         
@@ -229,8 +229,8 @@ class OutputReportController extends Controller
                             $output_types[$output_record->output_type] = $output_record->output_in_kg;
                         }
 
-                        if (!isset($groups[$output_record->$grouping])) {
-                            $groups[$output_record->$grouping] = $output_record->$grouping;
+                        if (!in_array($output_record->$grouping, $groups)) {
+                            $groups[] = $output_record->$grouping;
                         }
                     }
                     
