@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\AgriculturalOutput;
-use App\RiceOutput;
+use App\Rice;
+use App\Vegetable;
 use Illuminate\Http\Request;
 
 class AgriculturalOutputController extends Controller
@@ -54,13 +55,21 @@ class AgriculturalOutputController extends Controller
         $agriculturalOutput->save();
 
         if ($agriculturalOutput->output_type == 'rice') {
-            $riceOutput = new RiceOutput();
-            $riceOutput->agricultural_output_id = $agriculturalOutput->id;
-            $riceOutput->planted_at = $request->input('planted-at');
-            $riceOutput->packaged_at = $request->input('packaged-at');
-            $riceOutput->quantity_packaged = $request->input('quantity-packaged');
-            $riceOutput->kg_per_packaging = $request->input('kg-per-packaging');
-            $riceOutput->save();
+            $rice = new Rice();
+            $rice->agricultural_output_id = $agriculturalOutput->id;
+            $rice->planted_at = $request->input('planted-at');
+            $rice->packaged_at = $request->input('packaged-at');
+            $rice->quantity_packaged = $request->input('quantity-packaged');
+            $rice->kg_per_packaging = $request->input('kg-per-packaging');
+            $rice->save();
+        } elseif ($agriculturalOutput->output_type == 'vegetables') {
+            $vegetable = new Vegetable();
+            $vegetable->agricultural_output_id = $agriculturalOutput->id;
+            $vegetable->planted_at = $request->input('planted-at');
+            $vegetable->packaged_at = $request->input('packaged-at');
+            $vegetable->quantity_packaged = $request->input('quantity-packaged');
+            $vegetable->kg_per_packaging = $request->input('kg-per-packaging');
+            $vegetable->save();
         }
 
         return redirect('/output');

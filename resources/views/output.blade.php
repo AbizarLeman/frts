@@ -25,20 +25,10 @@
                                 <p class="form-control">Vegetables</p>
                             @elseif ($type == 'fruits')
                                 <p class="form-control">Fruits</p>
-                            @elseif ($type == 'buffaloes')
-                                <p class="form-control">Buffaloes</p>
                             @elseif ($type == 'cattle')
                                 <p class="form-control">Cattle</p>
                             @elseif ($type == 'goats')
                                 <p class="form-control">Goats</p>
-                            @elseif ($type == 'cut-flowers')
-                                <p class="form-control">Cut Flower</p>
-                            @elseif ($type == 'eggs')
-                                <p class="form-control">Eggs</p>
-                            @elseif ($type == 'ornamental-horticulture')
-                                <p class="form-control">Ornamental Horticulture</p>
-                            @elseif ($type == 'miscellaneous')
-                                <p class="form-control">Miscellaneous</p> 
                             @endif
                                 <input id="output-type" type="text" value="{{ $type }}" name="output-type" hidden autofocus>
                             </div>
@@ -47,7 +37,18 @@
 
                         @include('addrice')
 
-                            
+                        @elseif ($type == 'broiler')
+
+                        @elseif ($type == 'vegetables')
+
+                        @include('addvegetable')
+
+                        @elseif ($type == 'fruits')
+
+                        @elseif ($type == 'cattle')
+
+                        @elseif ($type == 'goats')
+   
                         @endif
                         <div class="form-group row">
                             <label for="output-in-kg" class="col-md-4 col-form-label text-md-right">Total Output in Kilogram</label>

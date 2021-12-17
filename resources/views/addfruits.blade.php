@@ -1,5 +1,3 @@
-</div>
-
 <div class="form-group row">
     <label for="packaged-at" class="col-md-4 col-form-label text-md-right">Harvesting/Packaging Date</label>  
     <div class="col-md-6">

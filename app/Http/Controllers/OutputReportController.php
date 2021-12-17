@@ -138,13 +138,18 @@ class OutputReportController extends Controller
     
                     foreach($output_groups as $output_group)
                     {
-                        $output_in_kg = 0.0;
-            
+                        $output_types = array();
+                        
                         foreach($output_group as $output_record)
                         {
-                            $output_in_kg = $output_in_kg + $output_record->output_in_kg;
+                            if (isset($output_types[$output_record->output_type])) {
+                                $output_types[$output_record->output_type] = $output_types[$output_record->output_type] + $output_record->output_in_kg;
+                            } else {
+                                $output_types[$output_record->output_type] = $output_record->output_in_kg;
+                            }
                         }
-                        $group_total[$output_record->$grouping] = $output_in_kg;
+                        
+                        $group_total[$output_record->$grouping] = $output_types;
                     }
     
                     $report_total[$month_name[$month-1]] = $group_total;
@@ -175,16 +180,21 @@ class OutputReportController extends Controller
 
                     $group_total = array();
                     $output_groups = AgriculturalOutput::whereIn('id', $output_ids)->whereYear('packaged_at', '=', $year)->whereMonth('packaged_at', '>=', $start_month)->whereMonth('packaged_at', '<=', $end_month)->get()->groupBy($grouping);
-    
+
                     foreach($output_groups as $output_group)
                     {
-                        $output_in_kg = 0.0;
-            
+                        $output_types = array();
+                        
                         foreach($output_group as $output_record)
                         {
-                            $output_in_kg = $output_in_kg + $output_record->output_in_kg;
+                            if (isset($output_types[$output_record->output_type])) {
+                                $output_types[$output_record->output_type] = $output_types[$output_record->output_type] + $output_record->output_in_kg;
+                            } else {
+                                $output_types[$output_record->output_type] = $output_record->output_in_kg;
+                            }
                         }
-                        $group_total[$output_record->$grouping] = $output_in_kg;
+                        
+                        $group_total[$output_record->$grouping] = $output_types;
                     }
 
                     $report_total[$quarter_names[$quarter_count++]] = $group_total;
@@ -196,13 +206,18 @@ class OutputReportController extends Controller
 
                 foreach($output_groups as $output_group)
                 {
-                    $output_in_kg = 0.0;
-        
+                    $output_types = array();
+                    
                     foreach($output_group as $output_record)
                     {
-                        $output_in_kg = $output_in_kg + $output_record->output_in_kg;
+                        if (isset($output_types[$output_record->output_type])) {
+                            $output_types[$output_record->output_type] = $output_types[$output_record->output_type] + $output_record->output_in_kg;
+                        } else {
+                            $output_types[$output_record->output_type] = $output_record->output_in_kg;
+                        }
                     }
-                    $group_total[$output_record->$grouping] = $output_in_kg;
+                    
+                    $group_total[$output_record->$grouping] = $output_types;
                 }
 
                 $report_total = $group_total;

@@ -38,7 +38,103 @@
             <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="buildTable();">View Table</button>
         </div>
     </div>
+    <div class="row justify-content-center">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="7">2005 or Date range</th>
+                </tr>
+                <tr>
+                    <th>Area</th>
+                    <th>Main Crops Production</th>
+                    <th>Q1</th>
+                    <th>Q2</th>
+                    <th>Q3</th>
+                    <th>Q4</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="3">Tungku</td>
+                    <td>Rice</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                </tr>
+                <tr>
+                    <td>Vegetables</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                </tr>
+                <tr>
+                    <td>Eggs</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Beribi</td>
+                    <td>Rice</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                </tr>
+                <tr>
+                    <td>Vegetables</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                </tr>
+                <tr>
+                    <td>Eggs</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Kiarong</td>
+                    <td>Rice</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                </tr>
+                <tr>
+                    <td>Vegetables</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                </tr>
+                <tr>
+                    <td>Eggs</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                    <td>2323</td>
+                </tr>
+            </tbody>
+        </table>      
+    </div>
 </div>
+
 @endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
