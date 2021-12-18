@@ -29,14 +29,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-5">
-            <div class="card">
-                <div class="card-body" style="text-align:center;">
-                    <a href=""><i class="bi bi-truck" style="font-size:10em;"></i></a>
-                    <h1 class="card-title text-center">Sales</h5>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 @endsection

@@ -43,7 +43,11 @@
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                                <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus>
+                                <select id="role" class="form-control" name="role" autofocus>
+                                    @foreach (\App\Role::all() as $role)
+                                    <option value="{{ $role->role }}">{{ $role->role }}</option>
+                                    @endforeach
+                                </select>
 
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">

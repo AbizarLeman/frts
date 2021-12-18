@@ -41,17 +41,6 @@
             </div>
         </div>
         <br><br><br><br>
-        <div id="reportForm">
-            <div class="row form-group">
-                <label for="title">Report Title:</label>
-                <input name="title" type="text" class="form-control" placeholder="Title" required>
-            </div>
-            <div class="row form-group">
-                <label for="description">Report Description:</label>
-                <textarea name="description" class="form-control" rows="5" placeholder="Description" required></textarea>
-            </div>
-        </div>
-        <br><br>
         <div id="printableArea" class="row justify-content-center">
             <table id="reportTable" class="table table-bordered table-hover" style="@media print {table, th, td {border: 1px solid black;}}">
                 <thead class="thead-dark">
@@ -64,6 +53,16 @@
                 <tbody class="table-striped" id="tableBody">
                 </tbody>
             </table>
+        </div>
+        <div id="reportForm">
+            <div class="row form-group">
+                <label for="title">Report Title:</label>
+                <input name="title" type="text" class="form-control" placeholder="Title" required>
+            </div>
+            <div class="row form-group">
+                <label for="description">Report Description:</label>
+                <textarea name="description" class="form-control" rows="5" placeholder="Description" required></textarea>
+            </div>
         </div>
         <br><br>
         <input id="companyArrayId" name="company-id-array" type="text" value="" hidden>

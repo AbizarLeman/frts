@@ -36,8 +36,6 @@ class CreateCompaniesTable extends Migration
             $table->boolean('miscellaneous')->default(0);
             $table->string('miscellaneous_string')->default('');
             $table->boolean('isVerified')->default(0);
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

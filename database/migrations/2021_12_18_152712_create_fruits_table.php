@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateFruitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,17 +14,15 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::enableForeignKeyConstraints();
-        Schema::dropIfExists('users');
-        Schema::create('users', function (Blueprint $table) {
+        Schema::dropIfExists('fruits');
+        Schema::create('fruits', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('roles')->default('');
-            $table->boolean('isAdmin')->default(0);
-            $table->bigInteger('company_id')->nullable();
-            $table->rememberToken();
+            $table->bigInteger('agricultural_output_id')->unsigned();
+            $table->foreign('agricultural_output_id')->references('id')->on('agricultural_outputs')->onDelete('cascade');
+            $table->date('planted_at');
+            $table->date('packaged_at');
+            $table->bigInteger('quantity_packaged');
+            $table->float('kg_per_packaging');
             $table->timestamps();
         });
     }
@@ -37,7 +35,7 @@ class CreateUsersTable extends Migration
     public function down()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('fruits');
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

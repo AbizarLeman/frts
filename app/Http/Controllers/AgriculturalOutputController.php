@@ -122,7 +122,7 @@ class AgriculturalOutputController extends Controller
 
     public function getOutputType()
     {
-        $company = Company::all()->where('user_id', auth()->user()->id)->first();
+        $company = Company::find(auth()->user()->id);
         return view('outputtypeselection',['company'=>$company]);
     }
 

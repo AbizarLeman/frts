@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateBroilersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,16 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+
         Schema::enableForeignKeyConstraints();
-        Schema::dropIfExists('users');
-        Schema::create('users', function (Blueprint $table) {
+        Schema::dropIfExists('broilers');
+        Schema::create('broilers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('roles')->default('');
-            $table->boolean('isAdmin')->default(0);
-            $table->bigInteger('company_id')->nullable();
-            $table->rememberToken();
+            $table->bigInteger('agricultural_output_id')->unsigned();
+            $table->foreign('agricultural_output_id')->references('id')->on('agricultural_outputs')->onDelete('cascade');
+            $table->date('packaged_at');
+            $table->bigInteger('number_of_head');
+            $table->float('kg_per_packaging');
             $table->timestamps();
         });
     }
@@ -37,7 +35,7 @@ class CreateUsersTable extends Migration
     public function down()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('broilers');
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\User;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -24,11 +25,13 @@ class CompanyController extends Controller
      */
     public function create()
     {
+        $companies = Company::all();
         if (auth()->user()->isAdmin == 0) {
-            $companies = Company::all();
+            if (!is_null(auth()->user()->company_id)) {
+                return view('home');
+            }
             return view('company',['companies'=>$companies,'layout'=>'create']);
         }
-
         return view('admindashboard');
     }
 
@@ -81,8 +84,10 @@ class CompanyController extends Controller
             $company->rice = $request->input('miscellaneous');
             $company->miscellaneous_string = $request->input('miscellaneous-string');
         }
-        $company->user_id = auth()->user()->id;
         $company->save();
+        $user = User::find(auth()->user()->id);
+        $user->company_id = $company->id;
+        $user->save();
         return redirect('/company');
     }
 
