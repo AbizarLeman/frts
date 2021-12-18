@@ -132,6 +132,7 @@ class OutputReportController extends Controller
                 $month_name = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
             
                 $groups = array();
+                $output_list = array();
                 for ($month = 1; $month <= 12; $month++)
                 {
                     $group_total = array();
@@ -152,6 +153,9 @@ class OutputReportController extends Controller
                             if (!in_array($output_record->$grouping, $groups)) {
                                 $groups[] = $output_record->$grouping;
                             }
+                            if (!in_array($output_record->output_type, $output_list)) {
+                                $output_list[] = $output_record->output_type;
+                            }
                         }
                         
                         $group_total[$output_record->$grouping] = $output_types;
@@ -159,6 +163,7 @@ class OutputReportController extends Controller
     
                     $report_total[$month_name[$month-1]] = $group_total;
                     $report_total['groups'] = $groups;
+                    $report_total['outputList'] = $output_list;
                 }
                 break;
             case 'quarter':
@@ -188,6 +193,7 @@ class OutputReportController extends Controller
                     $output_groups = AgriculturalOutput::whereIn('id', $output_ids)->whereYear('packaged_at', '=', $year)->whereMonth('packaged_at', '>=', $start_month)->whereMonth('packaged_at', '<=', $end_month)->get()->groupBy($grouping);
 
                     $groups = array();
+                    $output_list = array();
                     foreach($output_groups as $output_group)
                     {
                         $output_types = array();
@@ -203,6 +209,9 @@ class OutputReportController extends Controller
                             if (!in_array($output_record->$grouping, $groups)) {
                                 $groups[] = $output_record->$grouping;
                             }
+                            if (!in_array($output_record->output_type, $output_list)) {
+                                $output_list[] = $output_record->output_type;
+                            }
                         }
                         
                         $group_total[$output_record->$grouping] = $output_types;
@@ -210,6 +219,7 @@ class OutputReportController extends Controller
 
                     $report_total[$quarter_names[$quarter_count++]] = $group_total;
                     $report_total['groups'] = $groups;
+                    $report_total['outputList'] = $output_list;
                 }
                 break;
             case 'none':
@@ -217,6 +227,7 @@ class OutputReportController extends Controller
                 $output_groups = AgriculturalOutput::whereIn('id', $output_ids)->get()->groupBy($grouping);
 
                 $groups = array();
+                $output_list = array();
                 foreach($output_groups as $output_group)
                 {
                     $output_types = array();
@@ -232,13 +243,17 @@ class OutputReportController extends Controller
                         if (!in_array($output_record->$grouping, $groups)) {
                             $groups[] = $output_record->$grouping;
                         }
+                        if (!in_array($output_record->output_type, $output_list)) {
+                            $output_list[] = $output_record->output_type;
+                        }
                     }
                     
                     $group_total[$output_record->$grouping] = $output_types;
                 }
 
-                $report_total['group_total'] = $group_total;
+                $report_total['groupTotal'] = $group_total;
                 $report_total['groups'] = $groups;
+                $report_total['outputList'] = $output_list;
                 break;   
         }
 
