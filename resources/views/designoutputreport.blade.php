@@ -38,24 +38,25 @@
             <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="buildTable();">View Table</button>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div id="printableArea" class="col-12">
-            <br><br>
-            <table id="reportTable" class="table table-bordered table-hover">
-                <thead class="thead-dark">
-                    <tr>
-                        <th colspan="7" class="text-center" id="tableHeader"></th>
-                    </tr>
-                    <tr id="tableHeaderColumn">
-                    </tr>
-                </thead>
-                <tbody class="table-striped" id="tableBody">
-                </tbody>
-            </table>
-            <br><br>      
-        </div>
-        <div class="col-3">
-            <button id="printButton" type="submit" class="btn btn-primary btn-lg btn-block" onclick="printDiv('printableArea');">Print Table</button>
+    <br><br>
+    <div id="printableArea" class="row justify-content-center">
+        <table id="reportTable" class="table table-bordered table-hover" style="@media print {table, th, td {border: 1px solid black;}}">
+            <thead class="thead-dark">
+                <tr>
+                    <th colspan="7" class="text-center" id="tableHeader"></th>
+                </tr>
+                <tr id="tableHeaderColumn">
+                </tr>
+            </thead>
+            <tbody class="table-striped" id="tableBody">
+            </tbody>
+        </table>
+    </div>
+    <br><br>
+    <div class="col-12">
+        <div class="btn-group">
+            <button id="printButton" type="submit" class="btn btn-lg" onclick="printDiv('printableArea');">Print Table</button>
+            <button id="saveButton" type="submit" class="btn btn-primary btn-lg">Save Table</button>
         </div>
     </div>
 </div>
@@ -68,6 +69,7 @@
         $('#tableBody').empty();
         $('#reportTable').hide();
         $('#printButton').hide();
+        $('#saveButton').hide();
     });
 
     window.onload = function () {
@@ -86,6 +88,7 @@
         $('#tableBody').next('p').remove();
         $('#reportTable').hide();
         $('#printButton').hide();
+        $('#saveButton').hide();
         $.ajax({
             type: "POST",
             async: false,
@@ -101,7 +104,6 @@
             },
             success: function(response) {
                 $('#tableBody').empty();
-                console.log(response);
                 //Set Header Text
                 let headingText = "";
                 let startDate = "{{ $start_date }}";
@@ -271,6 +273,7 @@
                 $('#tableBody').html(bodyContent);
                 $('#reportTable').show();
                 $('#printButton').show();
+                $('#saveButton').show();
             }
         });
     }
