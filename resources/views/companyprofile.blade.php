@@ -1,42 +1,74 @@
-<table class="table">
-    <thead class="thead-light">
-        <tr>
-            <th scope="col">Company ID</th>
-            <th scope="col">Company Description</th>
-            <th scope="col">Agriculture Output Type</th>
-            <th scope="col">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{ $company->id }}</td>
-
-            <td><b>Company Name: </b>{{ $company->company_name }}<br>
-                <b>ROCBN: </b>{{ $company->rocbn }}<br>
-                <b>District: </b>{{ $company->district }}<br>
-                <b>Mukim: </b>{{ $company->mukim }}<br>
-                <b>Village: </b>{{ $company->village }}<br>
-                <b>Street Address: </b>{{ $company->street_address }}<br>
-            </td>
-
-            <td><b>Rice: </b>{{ $company->rice }}<br>
-                <b>Broiler: </b>{{ $company->broiler }}<br>
-                <b>Vegetable: </b>{{ $company->vegetable }}<br>
-                <b>Fruit: </b>{{ $company->fruit }}<br>
-                <b>Buffalo: </b>{{ $company->buffalo }}<br>
-                <b>Cattle: </b>{{ $company->cattle }}<br>
-                <b>Cut Flower: </b>{{ $company->cattle }}<br>
-                <b>Egg: </b>{{ $company->egg }}<br>
-                <b>Ornamental Horticulture: </b>{{ $company->ornamental_horticulture }}<br>
-                <b>Miscellaneous: </b>{{ $company->miscellaneous_string }}<br>
-            </td>
-
-            <td>
-                {{-- <a href="{{ url('/company/edit/'.$employee->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                <a href="{{ url('/company/destroy/'.$employee->id) }}" class="btn btn-sm btn-danger">Delete</a> --}}
-                <a href="{{url ('/company/edit/'.$company->id)}}" class="btn btn-sm btn-warning">Edit</a>
-                <a href="{{url ('/company/destroy/'.$company->id)}}" class="btn btn-sm btn-danger">Delete</a>
-            </td>
-        </tr>     
-    </tbody>
-</table>
+<div class="container">
+    <br><br>
+    <div class="row">
+        <h5 class="col-md-4 text-md-right">Company Name / Owner's Name:</h5>
+    
+        <div class="col-md-6">
+            <p>{{ $company->company_name }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <h5 class="col-md-4 text-md-right">ROCBN:</h5>
+    
+        <div class="col-md-6">
+            <p>{{ $company->rocbn }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <h5 class="col-md-4 text-md-right">District:</h5>
+    
+        <div class="col-md-6">
+            <p>{{ $company->district }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <h5 class="col-md-4 text-md-right">Mukim:</h5>
+    
+        <div class="col-md-6">
+            <p>{{ $company->mukim }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <h5 class="col-md-4 text-md-right">Village:</h5>
+    
+        <div class="col-md-6">
+            <p>{{ $company->village }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <h5 class="col-md-4 text-md-right">Street Address:</h5>
+    
+        <div class="col-md-6">
+            <p>{{ $company->street_address }}</p>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <h5 class="col-md-4 text-md-right">Agricultural Output Type:</h5>
+    
+        <div class="col-md-6">
+            @if ($company->rice)
+            <p>Rice</p>
+            @endif
+            @if ($company->broiler)
+            <p>Broiler</p>
+            @endif
+            @if ($company->vegetable)
+            <p>Vegetables</p>
+            @endif
+            @if ($company->fruit)
+            <p>Fruits</p>
+            @endif
+            @if ($company->cattle)
+            <p>Cattle</p>
+            @endif
+            @if ($company->goat)
+            <p>Goats</p>
+            @endif
+            @if ($company->egg)
+            <p>Eggs</p>
+            @endif
+        </div>
+    </div>
+    <br><br>
+</div>

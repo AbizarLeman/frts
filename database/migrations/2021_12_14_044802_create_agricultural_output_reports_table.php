@@ -20,7 +20,6 @@ class CreateAgriculturalOutputReportsTable extends Migration
             $table->string('district');
             $table->string('mukim');
             $table->string('village');
-            $table->string('agricultural_development_area');
             $table->bigInteger('agricultural_output_id')->unsigned();
             $table->foreign('agricultural_output_id')->references('id')->on('agricultural_outputs');
             $table->bigInteger('report_id')->unsigned();

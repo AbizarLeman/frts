@@ -61,28 +61,33 @@
                             <label for="district" class="col-md-4 col-form-label text-md-right">District</label>
 
                             <div class="col-md-6">
-                                <input id="district" type="text" class="form-control" name="district" required autofocus>
+                                <select id="district" class="form-control" name="district" onchange="getMukimDDL(this.value);" required autofocus>
+                                    @foreach (\App\District::all()->pluck('district') as $district)
+                                    <option value="{{ $district }}">{{ $district}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="mukim" class="col-md-4 col-form-label text-md-right">Mukim</label>
 
                             <div class="col-md-6">
-                                <input id="mukim" type="text" class="form-control" name="mukim" required autofocus>
+                                <select id="mukim" class="form-control" name="mukim" onchange="getVillageDDL(this.value);" required autofocus>
+                                    @foreach (\App\Mukim::where(['district' => 'Brunei-Muara'])->pluck('mukim') as $mukim)
+                                    <option value="{{ $mukim }}">{{ $mukim }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="village" class="col-md-4 col-form-label text-md-right">Village</label>
 
                             <div class="col-md-6">
-                                <input id="village" type="text" class="form-control" name="village" required autofocus>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="agricultural-development-area" class="col-md-4 col-form-label text-md-right">Agricultural Development Area</label>
-
-                            <div class="col-md-6">
-                                <input id="agricultural-development-area" type="text" class="form-control" name="agricultural-development-area" autofocus>
+                                <select id="village" class="form-control" name="village" required autofocus>
+                                    @foreach (\App\Village::where(['mukim' => 'Berakas A'])->pluck('village') as $village)
+                                    <option value="{{ $village }}">{{ $village }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row mb-0">
@@ -98,4 +103,44 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+    });
+    function getMukimDDL(district) {
+        $('#mukim').empty();
+        $('#village').empty();
+        $.ajax({
+            type: "GET",
+            async: false,
+            url: '{{ url('/misc/mukim/') }}',
+            data:  {
+                "_token": "{{ csrf_token() }}",
+                "district": JSON.stringify(district),
+            },
+            success: function(response) {
+                response.forEach(mukim => {
+                    $('#mukim').append( new Option(mukim,mukim) )
+                });
+            }
+        });
+    }
+    function getVillageDDL(mukim) {
+        $('#village').empty();
+        $.ajax({
+            type: "GET",
+            async: false,
+            url: '{{ url('/misc/village/') }}',
+            data:  {
+                "_token": "{{ csrf_token() }}",
+                "mukim": JSON.stringify(mukim),
+            },
+            success: function(response) {
+                response.forEach(village => {
+                    $('#village').append( new Option(village,village) )
+                });
+            }
+        });
+    }
+</script>
 @endsection

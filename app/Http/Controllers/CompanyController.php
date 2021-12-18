@@ -100,11 +100,10 @@ class CompanyController extends Controller
     public function show()
     {
         if (auth()->user()->isAdmin == 0) {
-            $company = Company::all()->where('user_id', auth()->user()->id)->first();
-
-            if ($company == null) { 
+            if (auth()->user()->company_id == null) { 
                 return redirect('/company/create');
             }
+            $company = Company::all()->where('id', auth()->user()->company_id)->first();
     
             return view('company',['company'=>$company,'layout'=>'show']);
         }

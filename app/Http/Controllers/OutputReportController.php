@@ -61,8 +61,7 @@ class OutputReportController extends Controller
         $report->year = $request->input('year');
         $report->start_date = $request->input('start-date');
         $report->end_date = $request->input('end-date');
-        //dd(json_decode($report->company_id_array)->original);
-        // $report->save();
+        $report->save();
         return view('adminsavedreports',['reports'=>Report::all()]);
     }
 

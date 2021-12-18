@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/misc/roles', 'MiscellaneousController@getRole');
+Route::get('/misc/mukim', 'MiscellaneousController@getMukim');
+Route::get('/misc/village', 'MiscellaneousController@getVillage');
 
 Route::group(['middleware' => ['auth']], function() {
     // Company section
@@ -33,6 +35,7 @@ Route::group(['middleware' => ['auth']], function() {
     // Output section
     Route::get('/output',"AgriculturalOutputController@getOutputType");
     Route::get('/output/create/{selection}',"AgriculturalOutputController@create");
+    Route::get('/output/history',"AgriculturalOutputController@index");
     Route::post('/output/store/',"AgriculturalOutputController@store");
 });
 

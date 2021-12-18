@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         @if ($company->rice == 1)
 
-        <div class="col-5 m-4">
+        <div class="col-10 my-2">
             <div class="card">
                 <div class="card-body" style="text-align:center;">
                     <a href="{{ url('output/create/'.'rice') }}"><i class="bi bi-building" style="font-size:10em;"></i></a>
@@ -17,7 +17,7 @@
         @endif
         @if ($company->broiler == 1)
 
-        <div class="col-5 m-4">
+        <div class="col-10 my-2">
             <div class="card">
                 <div class="card-body" style="text-align:center;">
                     <a href="{{ url('output/create/'.'broiler') }}"><i class="bi bi-shop" style="font-size:10em;"></i></a>
@@ -29,7 +29,7 @@
         @endif
         @if ($company->vegetable == 1)
 
-        <div class="col-5 m-4">
+        <div class="col-10 my-2">
             <div class="card">
                 <div class="card-body" style="text-align:center;">
                     <a href="{{ url('output/create/'.'vegetables') }}"><i class="bi bi-list-columns" style="font-size:10em;"></i></a>
@@ -41,7 +41,7 @@
         @endif
         @if ($company->fruit == 1)
 
-        <div class="col-5 m-4">
+        <div class="col-10 my-2">
             <div class="card">
                 <div class="card-body" style="text-align:center;">
                     <a href="{{ url('output/create/'.'fruits') }}"><i class="bi bi-truck" style="font-size:10em;"></i></a>
@@ -51,21 +51,9 @@
         </div>
 
         @endif
-        @if ($company->buffalo == 1)
-        
-        <div class="col-5 m-4">
-            <div class="card">
-                <div class="card-body" style="text-align:center;">
-                    <a href="{{ url('output/create/'.'buffaloes') }}"><i class="bi bi-list-columns" style="font-size:10em;"></i></a>
-                    <h1 class="card-title text-center">Buffaloes</h1>
-                </div>
-            </div>
-        </div>
-
-        @endif
         @if ($company->cattle == 1)
         
-        <div class="col-5 m-4">
+        <div class="col-10 my-2">
             <div class="card">
                 <div class="card-body" style="text-align:center;">
                     <a href="{{ url('output/create/'.'cattle') }}"><i class="bi bi-truck" style="font-size:10em;"></i></a>
@@ -77,7 +65,7 @@
         @endif
         @if ($company->goat == 1)
 
-        <div class="col-5 m-4">
+        <div class="col-10 my-2">
             <div class="card">
                 <div class="card-body" style="text-align:center;">
                     <a href="{{ url('output/create/'.'goats') }}"><i class="bi bi-list-columns" style="font-size:10em;"></i></a>
@@ -87,21 +75,9 @@
         </div>
 
         @endif
-        @if ($company->cut_flower == 1)
-        
-        <div class="col-5 m-4">
-            <div class="card">
-                <div class="card-body" style="text-align:center;">
-                    <a href="{{ url('output/create/'.'cut-flowers') }}"><i class="bi bi-truck" style="font-size:10em;"></i></a>
-                    <h1 class="card-title text-center">Cut Flowers</h1>
-                </div>
-            </div>
-        </div>
-        
-        @endif
         @if ($company->egg == 1)
 
-        <div class="col-5 m-4">
+        <div class="col-10 my-2">
             <div class="card">
                 <div class="card-body" style="text-align:center;">
                     <a href="{{ url('output/create/'.'eggs') }}"><i class="bi bi-list-columns" style="font-size:10em;"></i></a>
@@ -110,30 +86,6 @@
             </div>
         </div>
 
-        @endif
-        @if ($company->ornamental_horticulture == 1)
-
-        <div class="col-5 m-4">
-            <div class="card">
-                <div class="card-body" style="text-align:center;">
-                    <a href="{{ url('output/create/'.'ornamental-horticulture') }}"><i class="bi bi-truck" style="font-size:10em;"></i></a>
-                    <h1 class="card-title text-center">Ornamental Horticulture</h1>
-                </div>
-            </div>
-        </div>
-
-        @endif
-        @if ($company->miscellaneous == 1)
-
-        <div class="col-5 m-4">
-            <div class="card">
-                <div class="card-body" style="text-align:center;">
-                    <a href="{{ url('output/create/'.'miscellaneous') }}"><i class="bi bi-truck" style="font-size:10em;"></i></a>
-                    <h1 class="card-title text-center">Miscellaneous</h1>
-                </div>
-            </div>
-        </div>
-            
         @endif
     </div>
 </div>

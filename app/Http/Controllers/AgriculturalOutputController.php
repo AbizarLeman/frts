@@ -17,7 +17,9 @@ class AgriculturalOutputController extends Controller
      */
     public function index()
     {
-        //
+        $agriculturalOutputs = AgriculturalOutput::where('company_id',auth()->user()->company_id)->get();
+        
+        return view('outputlist',['outputs'=>$agriculturalOutputs]);
     }
 
     /**
@@ -42,7 +44,7 @@ class AgriculturalOutputController extends Controller
      */
     public function store(Request $request)
     {
-        $company = Company::find(auth()->user()->id);
+        $company = Company::find(auth()->user()->company_id);
         $agriculturalOutput = new AgriculturalOutput();
         $agriculturalOutput->company_id = $company->id;
         $agriculturalOutput->output_type = $request->input('output-type');
@@ -51,7 +53,6 @@ class AgriculturalOutputController extends Controller
         $agriculturalOutput->district = $request->input('district');
         $agriculturalOutput->mukim = $request->input('mukim');
         $agriculturalOutput->village = $request->input('village');
-        $agriculturalOutput->agricultural_development_area = $request->input('agricultural-development-area');
         $agriculturalOutput->save();
 
         if ($agriculturalOutput->output_type == 'rice') {
@@ -122,7 +123,7 @@ class AgriculturalOutputController extends Controller
 
     public function getOutputType()
     {
-        $company = Company::find(auth()->user()->id);
+        $company = Company::find(auth()->user()->company_id);
         return view('outputtypeselection',['company'=>$company]);
     }
 

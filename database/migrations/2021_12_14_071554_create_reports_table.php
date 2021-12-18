@@ -26,10 +26,8 @@ class CreateReportsTable extends Migration
             $table->string('periodisation');
             $table->string('grouping');
             $table->string('year');
-            $table->bigInteger('agricultural_output_id')->unsigned(); //Obsolete
-            $table->bigInteger('sales_record_id')->unsigned(); //Obsolete
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->timestamps();
         });
     }

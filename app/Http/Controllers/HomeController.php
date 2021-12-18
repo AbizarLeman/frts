@@ -25,9 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         if (auth()->user()->isAdmin == 0) {
-            $company = Company::find(auth()->user()->id);
-
-            if ($company == null) {
+            if (auth()->user()->company_id == null) {
                 return redirect('/company');
             }
 

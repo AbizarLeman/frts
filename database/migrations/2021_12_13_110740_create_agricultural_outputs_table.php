@@ -25,7 +25,6 @@ class CreateAgriculturalOutputsTable extends Migration
             $table->string('district');
             $table->string('mukim');
             $table->string('village');
-            $table->string('agricultural_development_area');
             $table->boolean('isVerified')->default(0);
             $table->timestamps();
         });
