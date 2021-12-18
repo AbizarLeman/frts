@@ -13,15 +13,22 @@ class CreateReportsTable extends Migration
      */
     public function up()
     {
+        Schema::enableForeignKeyConstraints();
+        Schema::dropIfExists('reports');
         Schema::create('reports', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('company_id_array');
             $table->string('title');
             $table->string('description');
             $table->string('report_type');
-            $table->bigInteger('agricultural_output_id')->unsigned();
-            $table->bigInteger('sales_record_id')->unsigned();
+            $table->string('periodisation');
+            $table->string('grouping');
+            $table->string('year');
+            $table->bigInteger('agricultural_output_id')->unsigned(); //Obsolete
+            $table->bigInteger('sales_record_id')->unsigned(); //Obsolete
+            $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();
         });
@@ -34,6 +41,8 @@ class CreateReportsTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('reports');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
