@@ -38,7 +38,9 @@ Route::group(['middleware' => ['auth']], function() {
 Route::group(['middleware' => ['auth', 'admin']], function() {
     // Report section
     Route::get('/report/index',"OutputReportController@index");
+    Route::get('/report/report-index',"OutputReportController@reportIndex");
     Route::get('/report/filter',"OutputReportController@getFilteredList");
+    Route::get('/report/report-view/{id}',"OutputReportController@reportView");
     Route::post('/report/view',"OutputReportController@buildTable");
     Route::post('/report/store/',"OutputReportController@store");
 });

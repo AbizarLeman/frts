@@ -22,6 +22,17 @@ class OutputReportController extends Controller
         return view('adminoutputlist',['outputs'=>$agriculturalOutputs,'layout'=>'index']);
     }
 
+    public function reportIndex()
+    {
+        return view('adminsavedreports',['reports'=>Report::all()]);
+    }
+
+    public function reportView($id)
+    {
+        // dd(Report::find($id));
+        return view('adminviewreport',['report'=>Report::find($id)]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -50,10 +61,9 @@ class OutputReportController extends Controller
         $report->year = $request->input('year');
         $report->start_date = $request->input('start-date');
         $report->end_date = $request->input('end-date');
-        dd(json_decode($report->company_id_array)->original);
+        //dd(json_decode($report->company_id_array)->original);
         // $report->save();
-        return view('adminoutputlist');
-        // return view('savedreport');
+        return view('adminsavedreports',['reports'=>Report::all()]);
     }
 
     /**
@@ -64,7 +74,7 @@ class OutputReportController extends Controller
      */
     public function show($id)
     {
-        //
+    
     }
 
     /**

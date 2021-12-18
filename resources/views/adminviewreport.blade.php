@@ -2,135 +2,98 @@
 
 @section('content')
 <div class="container">
-    <form method="POST" action="{{ url('/report/store/') }}">
-        @csrf
-        <div class="row justify-content-center">
-            <div class="col text-center">
-                <h1 class="display-4">Agricultural Output Report</h1><br><br><br>
-            </div>
+    <div class="row justify-content-center">
+        <div class="col text-center">
+            <h1 class="display-4">{{ $report->title }}</h1><br><br><br>
         </div>
-        <div class="row">
-            <div class="col-4">
-                <label for="output-type">Periodisation:</label>
-                <select class="form-control" name="periodisation" id="periodisation">
-                    <option value="quarter">Annual Quarter</option>
-                    <option value="month">Monthly</option>
-                    <option value="none">None</option>
-                </select>
-            </div>
-            <div class="col-4">
-                <label for="output-type">Group by:</label>
-                <select class="form-control" name="grouping" id="grouping">
-                    <option value="district">District</option>
-                    <option value="mukim">Mukim</option>
-                    <option value="village">Village</option>
-                    <option value="agricultural_development_area">Agricultural Development Area</option>
-                    <option value="company_id">Company</option>
-                </select>
-            </div>
-            <div class="col-4" id="yearDiv">
-                <label for="year">Year:</label>
-                <select id="year" class="form-control" name="year">
-                </select>
-            </div>
-        </div>
-        <br><br>
-        <div class="row justify-content-center">
-            <div class="col-3">
-                <button class="btn btn-primary btn-lg btn-block" onclick="buildTable();">View Table</button>
-            </div>
-        </div>
-        <br><br><br><br>
-        <div id="reportForm">
-            <div class="row form-group">
-                <label for="title">Report Title:</label>
-                <input name="title" type="text" class="form-control" placeholder="Title" required>
-            </div>
-            <div class="row form-group">
-                <label for="description">Report Description:</label>
-                <textarea name="description" class="form-control" rows="5" placeholder="Description" required></textarea>
-            </div>
-        </div>
-        <br><br>
-        <div id="printableArea" class="row justify-content-center">
-            <table id="reportTable" class="table table-bordered table-hover" style="@media print {table, th, td {border: 1px solid black;}}">
-                <thead class="thead-dark">
-                    <tr>
-                        <th colspan="7" class="text-center" id="tableHeader"></th>
-                    </tr>
-                    <tr id="tableHeaderColumn">
-                    </tr>
-                </thead>
-                <tbody class="table-striped" id="tableBody">
-                </tbody>
-            </table>
-        </div>
-        <br><br>
-        <input id="companyArrayId" name="company-id-array" type="text" value="" hidden>
-        <input name="report-type" type="text" value="output_report" hidden>
-        <input name="start-date" type="text" value="{{ $start_date }}" hidden>
-        <input name="end-date" type="text" value="{{ $end_date }}" hidden>
+    </div>
+    <div class="row justify-content-center">
         <div class="col-12">
-            <div class="btn-group">
-                <button id="printButton" class="btn btn-lg" onclick="printDiv('printableArea');">Print Table</button>
-                <button id="saveButton" type="submit" class="btn btn-primary btn-lg">Save Report</button>
+            <div class="row">
+                <div class="col-4">
+                    <label for="" class="lead">Report Type:</label>
+                    <p>{{ $report->report_type }}</p>
+                </div>
+                <div class="col-4">
+                    <label for="" class="lead">Created At:</label>
+                    <p>{{ $report->created_at->format('d M Y') }}</p>
+                </div>
+                <div class="col-4">
+                    <label for="" class="lead">Created By:</label>
+                    <p>{{ \App\User::where(['id' => $report->user_id])->pluck('name')->first() }}</p>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-12">
+                    <label for="" class="lead">Description:</label>
+                    <p>{{ $report->description }}</p>
+                </div>
+            </div>
+            <br><br>
+            {{-- <div class="row justify-content-center">
+                <div class="col-3">
+                    <button class="btn btn-primary btn-lg btn-block" onclick="buildTable();">View Table</button>
+                </div>
+            </div> --}}
+            <br><br><br>
+            <div id="printableArea" class="row">
+                <table id="reportTable" class="table table-bordered table-hover" style="@media print {table, th, td {border: 1px solid black;}}">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th colspan="7" class="text-center" id="tableHeader"></th>
+                        </tr>
+                        <tr id="tableHeaderColumn">
+                        </tr>
+                    </thead>
+                    <tbody class="table-striped" id="tableBody">
+                    </tbody>
+                </table>
             </div>
         </div>
-    </form>
+    </div>
+    <br><br>
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <button class="btn btn-primary btn-lg btn-block" onclick="printTable('printableArea');">Print Table</button>
+        </div>
+    </div>
+    <br><br><br>
+    <input id="periodisation" value="{{ $report->periodisation }}" hidden>
+    <input id="grouping" value="{{ $report->grouping }}" hidden>
 </div>
-
 @endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
-        let companyArrayId = JSON.stringify({!! json_encode($response, JSON_HEX_TAG) !!});
-        $('#companyArrayId').val(companyArrayId);
-        $('#tableBody').empty();
-        $('#reportForm').hide();
-        $('#reportTable').hide();
-        $('#printButton').hide();
-        $('#saveButton').hide();
+        buildTable();
     });
-
-    window.onload = function () {
-        let years = document.getElementById("year");
-        let currentYear = (new Date()).getFullYear();
- 
-        for (let i = currentYear; i >= currentYear-10; i--) {
-            var option = document.createElement("OPTION");
-            option.innerHTML = i;
-            option.value = i;
-            years.appendChild(option);
-        }
-    };
-
     function buildTable() {
+        let idArray = ({!! $report->company_id_array !!}.original);
         $('#tableBody').next('p').remove();
-        $('#reportForm').hide();
         $('#reportTable').hide();
         $('#printButton').hide();
-        $('#saveButton').hide();
         $.ajax({
             type: "POST",
             async: false,
             url: '{{ url('/report/view/') }}',
             data:  {
                 "_token": "{{ csrf_token() }}",
-                "idArray": ({!! json_encode($response, JSON_HEX_TAG) !!}.original),
+                "idArray": idArray,
                 "periodisation": $('#periodisation').val(),
                 "grouping":  $('#grouping').val(),
-                "start_date": "{{ $start_date }}",
-                "end_date": "{{ $end_date }}",
-                "year":  $('#year').val()
+                "start_date": "{{ $report->start_date }}",
+                "end_date": "{{ $report->end_date }}",
+                "year":  "{{ $report->year }}"
             },
             success: function(response) {
-
+                console.log(response);
                 $('#tableBody').empty();
                 //Set Header Text
                 let headingText = "";
-                let startDate = "{{ $start_date }}";
-                let endDate = "{{ $end_date }}";
+                let startDate = "{{ $report->start_date }}";
+                let endDate = "{{ $report->end_date }}";
 
                 if(startDate == "" || endDate == ""){
                     headingText = 'Agricultural Output Report for ' + $('#year').val() + ' in Kilograms';
@@ -281,6 +244,7 @@
                             } else {
                                 $("#tableHeader").attr('colspan', 3);
                                 $("#tableHeaderColumn").html("<th>Area</th><th>Main Crops Production Total</th><th>Total</th>");
+                                console.log(response);
 
                                 if (response.groupTotal[areaRow][outputTypeRow]) {
                                     rowContent = rowContent + "<td>" + response.groupTotal[areaRow][outputTypeRow].toFixed(2) + "</td>";
@@ -297,12 +261,10 @@
                 $('#reportForm').show();
                 $('#reportTable').show();
                 $('#printButton').show();
-                $('#saveButton').show();
             }
         });
     }
-
-    function printDiv(divName) {
+    function printTable(divName) {
         let printContents = document.getElementById(divName).innerHTML;
         let originalContents = document.body.innerHTML;
 
