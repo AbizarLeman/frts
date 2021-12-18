@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use DB;
 use App\AgriculturalOutput;
 use App\Company;
+use App\Report;
 use Illuminate\Http\Request;
 
 class OutputReportController extends Controller
@@ -36,8 +37,23 @@ class OutputReportController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id)
+    public function store(Request $request)
     {
+        $report = new Report();
+        $report->user_id = auth()->user()->id;
+        $report->company_id_array = $request->input('company-id-array');
+        $report->title = $request->input('title');
+        $report->description = $request->input('description');
+        $report->report_type = $request->input('report-type');
+        $report->periodisation = $request->input('periodisation');
+        $report->grouping = $request->input('grouping');
+        $report->year = $request->input('year');
+        $report->start_date = $request->input('start-date');
+        $report->end_date = $request->input('end-date');
+        dd(json_decode($report->company_id_array)->original);
+        // $report->save();
+        return view('adminoutputlist');
+        // return view('savedreport');
     }
 
     /**
