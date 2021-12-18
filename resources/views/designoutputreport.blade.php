@@ -38,6 +38,17 @@
             <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="buildTable();">View Table</button>
         </div>
     </div>
+    <br><br><br><br>
+    <div id="reportForm">
+        <div class="row form-group">
+            <label for="report-title">Report Title:</label>
+            <input name="report-title" type="text" class="form-control" placeholder="Title" required>
+        </div>
+        <div class="row form-group">
+            <label for="report-description">Report Description:</label>
+            <textarea name="report-description" class="form-control" rows="5"></textarea>
+          </div>
+    </div>
     <br><br>
     <div id="printableArea" class="row justify-content-center">
         <table id="reportTable" class="table table-bordered table-hover" style="@media print {table, th, td {border: 1px solid black;}}">
@@ -67,6 +78,7 @@
 <script>
     $(document).ready(function(){
         $('#tableBody').empty();
+        $('#reportForm').hide();
         $('#reportTable').hide();
         $('#printButton').hide();
         $('#saveButton').hide();
@@ -86,6 +98,7 @@
 
     function buildTable() {
         $('#tableBody').next('p').remove();
+        $('#reportForm').hide();
         $('#reportTable').hide();
         $('#printButton').hide();
         $('#saveButton').hide();
@@ -271,6 +284,7 @@
                     countArea = 1;
                 });
                 $('#tableBody').html(bodyContent);
+                $('#reportForm').show();
                 $('#reportTable').show();
                 $('#printButton').show();
                 $('#saveButton').show();
