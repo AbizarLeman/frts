@@ -103,7 +103,10 @@
                         <th scope="col">Mukim</th>
                         <th scope="col">Village</th>
                         <th scope="col">Agricultural Development Area</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">
+                            Select all
+                            <input onchange="checkAll();" type="checkbox" id="selectAllCheckbox" value="checkAll">
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -119,7 +122,7 @@
                         <td>{{ $output->village }}</td>
                         <td>{{ $output->agricultural_development_area }}</td>
                         <td>
-                            <input type="checkbox" id="outputId" name="output-id[]" value="{{ $output->id }}">
+                            <input class="recordCheckBoxes" type="checkbox" id="outputId" name="output-id[]" value="{{ $output->id }}">
                         </td>
                     </tr>
 
@@ -200,6 +203,20 @@
         } else {
             startDate.value = '';
             endDate.value = '';
+        }
+    }
+    function checkAll() {
+        let selectAllCheckbox = document.getElementById('selectAllCheckbox');
+        let checkBoxes = document.getElementsByClassName("recordCheckBoxes");
+
+        if (selectAllCheckbox.checked == true) {
+            for (let checkBox of checkBoxes) {
+                checkBox.checked = true;
+            }
+        } else {
+            for (let checkBox of checkBoxes) {
+                checkBox.checked = false;
+            }
         }
     }
 </script>
