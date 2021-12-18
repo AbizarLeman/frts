@@ -144,93 +144,114 @@
                                 $("#tableHeader").attr('colspan', 7);
                                 $("#tableHeaderColumn").html("<th>Area</th><th>Main Crops Production</th><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Total</th>");
 
+                                let total = 0;
+
                                 if (!jQuery.isEmptyObject(response["q1"]) && response["q1"][areaRow].hasOwnProperty(outputTypeRow)) {
                                     rowContent = rowContent + "<td>" + response["q1"][areaRow][outputTypeRow].toFixed(2) + "</td>";
+                                    total = total + response["q1"][areaRow][outputTypeRow];
                                 } else {
                                     rowContent = rowContent + "<td>0.00</td>";
                                 }
                                 if (!jQuery.isEmptyObject(response["q2"]) && response["q2"][areaRow].hasOwnProperty(outputTypeRow)) {
                                     rowContent = rowContent + "<td>" + response["q2"][areaRow][outputTypeRow].toFixed(2) + "</td>";
+                                    total = total + response["q2"][areaRow][outputTypeRow];
                                 } else {
                                     rowContent = rowContent + "<td>0.00</td>";
                                 }
                                 if (!jQuery.isEmptyObject(response["q3"]) && response["q3"][areaRow].hasOwnProperty(outputTypeRow)) {
                                     rowContent = rowContent + "<td>" + response["q3"][areaRow][outputTypeRow].toFixed(2) + "</td>";
+                                    total = total + response["q3"][areaRow][outputTypeRow];
                                 } else {
                                     rowContent = rowContent + "<td>0.00</td>";
                                 }
                                 if (!jQuery.isEmptyObject(response["q4"]) && response["q4"][areaRow].hasOwnProperty(outputTypeRow)) {
                                     rowContent = rowContent + "<td>" + response["q4"][areaRow][outputTypeRow].toFixed(2) + "</td>";
+                                    total = total + response["q4"][areaRow][outputTypeRow];
                                 } else {
                                     rowContent = rowContent + "<td>0.00</td>";
-                                } 
-                                rowContent = rowContent + "<td>Total</td></tr>";
+                                }
+                                
+                                rowContent = rowContent + "<td>" + total.toFixed(2) + "</td></tr>";
                                 bodyContent = bodyContent + rowContent
                             } else if($('#periodisation').val() == "month") {
                                 $("#tableHeader").attr('colspan', 15);
                                 $("#tableHeaderColumn").html("<th>Area</th><th>Main Crops Production</th><th>January</th><th>February</th><th>March</th><th>April</th><th>May</th><th>June</th><th>July</th><th>August</th><th>September</th><th>October</th><th>November</th><th>December</th><th>Total</th>");
 
+                                let total = 0;
+
                                 if (!jQuery.isEmptyObject(response["January"]) && response["January"][areaRow].hasOwnProperty(outputTypeRow)) {
                                     rowContent = rowContent + "<td>" + response["January"][areaRow][outputTypeRow].toFixed(2) + "</td>";
+                                    total = total + response["January"][areaRow][outputTypeRow];
                                 } else {
                                     rowContent = rowContent + "<td>0.00</td>";
                                 }
                                 if (!jQuery.isEmptyObject(response["February"]) && response["February"][areaRow].hasOwnProperty(outputTypeRow)) {
                                     rowContent = rowContent + "<td>" + response["February"][areaRow][outputTypeRow].toFixed(2) + "</td>";
+                                    total = total + response["February"][areaRow][outputTypeRow];
                                 } else {
                                     rowContent = rowContent + "<td>0.00</td>";
                                 }
                                 if (!jQuery.isEmptyObject(response["March"]) && response["March"][areaRow].hasOwnProperty(outputTypeRow)) {
                                     rowContent = rowContent + "<td>" + response["March"][areaRow][outputTypeRow].toFixed(2) + "</td>";
+                                    total = total + response["March"][areaRow][outputTypeRow];
                                 } else {
                                     rowContent = rowContent + "<td>0.00</td>";
                                 }
                                 if (!jQuery.isEmptyObject(response["April"]) && response["April"][areaRow].hasOwnProperty(outputTypeRow)) {
                                     rowContent = rowContent + "<td>" + response["April"][areaRow][outputTypeRow].toFixed(2) + "</td>";
+                                    total = total + response["April"][areaRow][outputTypeRow];
                                 } else {
                                     rowContent = rowContent + "<td>0.00</td>";
                                 }
                                 if (!jQuery.isEmptyObject(response["May"]) && response["May"][areaRow].hasOwnProperty(outputTypeRow)) {
                                     rowContent = rowContent + "<td>" + response["May"][areaRow][outputTypeRow].toFixed(2) + "</td>";
+                                    total = total + response["May"][areaRow][outputTypeRow];
                                 } else {
                                     rowContent = rowContent + "<td>0.00</td>";
                                 }
                                 if (!jQuery.isEmptyObject(response["June"]) && response["June"][areaRow].hasOwnProperty(outputTypeRow)) {
                                     rowContent = rowContent + "<td>" + response["June"][areaRow][outputTypeRow].toFixed(2) + "</td>";
+                                    total = total + response["June"][areaRow][outputTypeRow];
                                 } else {
                                     rowContent = rowContent + "<td>0.00</td>";
                                 }
                                 if (!jQuery.isEmptyObject(response["July"]) && response["July"][areaRow].hasOwnProperty(outputTypeRow)) {
                                     rowContent = rowContent + "<td>" + response["July"][areaRow][outputTypeRow].toFixed(2) + "</td>";
+                                    total = total + response["July"][areaRow][outputTypeRow];
                                 } else {
                                     rowContent = rowContent + "<td>0.00</td>";
                                 }
                                 if (!jQuery.isEmptyObject(response["August"]) && response["August"][areaRow].hasOwnProperty(outputTypeRow)) {
                                     rowContent = rowContent + "<td>" + response["August"][areaRow][outputTypeRow].toFixed(2) + "</td>";
+                                    total = total + response["August"][areaRow][outputTypeRow];
                                 } else {
                                     rowContent = rowContent + "<td>0.00</td>";
                                 }
                                 if (!jQuery.isEmptyObject(response["September"]) && response["September"][areaRow].hasOwnProperty(outputTypeRow)) {
                                     rowContent = rowContent + "<td>" + response["September"][areaRow][outputTypeRow].toFixed(2) + "</td>";
+                                    total = total + response["September"][areaRow][outputTypeRow];
                                 } else {
                                     rowContent = rowContent + "<td>0.00</td>";
                                 }
                                 if (!jQuery.isEmptyObject(response["October"]) && response["October"][areaRow].hasOwnProperty(outputTypeRow)) {
                                     rowContent = rowContent + "<td>" + response["October"][areaRow][outputTypeRow].toFixed(2) + "</td>";
+                                    total = total + response["October"][areaRow][outputTypeRow];
                                 } else {
                                     rowContent = rowContent + "<td>0.00</td>";
                                 }
                                 if (!jQuery.isEmptyObject(response["November"]) && response["November"][areaRow].hasOwnProperty(outputTypeRow)) {
                                     rowContent = rowContent + "<td>" + response["November"][areaRow][outputTypeRow].toFixed(2) + "</td>";
+                                    total = total + response["November"][areaRow][outputTypeRow];
                                 } else {
                                     rowContent = rowContent + "<td>0.00</td>";
                                 }
                                 if (!jQuery.isEmptyObject(response["December"]) && response["December"][areaRow].hasOwnProperty(outputTypeRow)) {
                                     rowContent = rowContent + "<td>" + response["December"][areaRow][outputTypeRow].toFixed(2) + "</td>";
+                                    total = total + response["December"][areaRow][outputTypeRow];
                                 } else {
                                     rowContent = rowContent + "<td>0.00</td>";
                                 }
-                                rowContent = rowContent + "<td>Total</td></tr>";
+                                rowContent = rowContent + "<td>" + total.toFixed(2) + "</td></tr>";
                                 bodyContent = bodyContent + rowContent
                             } else {
                                 $("#tableHeader").attr('colspan', 3);
@@ -244,10 +265,10 @@
                                 rowContent = rowContent + "</tr>";
                                 bodyContent = bodyContent + rowContent
                             }
-                        });
-                        countArea = 1;
                     });
-                    $('#tableBody').html(bodyContent);
+                    countArea = 1;
+                });
+                $('#tableBody').html(bodyContent);
                 $('#reportTable').show();
                 $('#printButton').show();
             }
