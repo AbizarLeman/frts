@@ -24,7 +24,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="mynavbar navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex" href="{{ url('/home') }}">
                     <div><img src="/img/newlogo.jfif" style="height: 30px; border-right: 1px solid #333" class="pr-3"></div>
