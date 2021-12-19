@@ -101,6 +101,7 @@
                 response.forEach(mukim => {
                     $('#mukim').append( new Option(mukim,mukim) )
                 });
+                getVillageDDL($('#mukim').val());
             }
         });
     }
