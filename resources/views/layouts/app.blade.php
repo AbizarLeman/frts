@@ -24,7 +24,11 @@
 </head>
 <body>
     <div id="app">
-        <nav class="mynavbar navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        @if (Auth::user() && Auth::user()->isAdmin)
+        <nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+        @else     
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        @endif
             <div class="container">
                 <a class="navbar-brand d-flex" href="{{ url('/home') }}">
                     <div><img src="/img/newlogo.jfif" style="height: 30px; border-right: 1px solid #333" class="pr-3"></div>
